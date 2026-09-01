@@ -1,5 +1,9 @@
 # Concept: Spectral Operator Chain (SOC) or Fourier Neural Operators
 
+<img width="1290" height="784" alt="image" src="https://github.com/user-attachments/assets/eb1974c2-5d91-46da-848b-1f32c4f215c2" />  
+
+*early testing*
+
 ## 1. Object
 
 The model operates on **finite-dimensional complex vectors representing a closed curve in a Fourier basis**:  
