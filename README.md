@@ -16,7 +16,14 @@ $$z(t) = \sum_{k=-N}^{N} C_k \, e^{i2\pi k t}, \quad t \in [0,1)$$
 
 A closed, periodic, band-limited complex-valued function reconstructed linearly from $\mathbf{S}$.  
 
-**One structural fact worth stating plainly:**  
+The model acts as:  
+- An Encoder: It takes a 2D closed shape (boundary contour) and encodes it into a compact list of complex numbers ($\mathbf{S}$),  
+  breaking the shape down into basic circular harmonics.  
+- A Feature Comparator: It compares two encoded shapes using a metric ($\eta$) that focuses purely on geometry while ignoring position, scale, and start-point phase.
+- A Decoder: It converts those complex numbers back into the original spatial boundary ($z(t)$) without losing information.
+
+**Worth stating plainly:**  
+We establish strict algebraic rules for how to manipulate and compare those descriptors,  
 $\mathbf{S}$ and $z(t)$ are related by a discrete Fourier transform pair.  
 Every operation below can equivalently be described as acting on $\mathbf{S}$ (coefficient space) or on $z(t)$ (reconstructed space),  
 they are the same operation viewed through two lossless, invertible representations.  
