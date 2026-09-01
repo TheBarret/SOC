@@ -14,10 +14,10 @@ $$\mathbf{S} \in \mathbb{C}^{2N+1}, \quad \mathbf{S} = (C_{-N}, \dots, C_0, \dot
 
 $$z(t) = \sum_{k=-N}^{N} C_k \, e^{i2\pi k t}, \quad t \in [0,1)$$
 
-This is the **whole object of study**. Nothing below assumes what $z(t)$ *represents* (a shape, a signal, a field, a token),  
-only that it is a closed, periodic, band-limited complex-valued function reconstructed linearly from $\mathbf{S}$.  
+A closed, periodic, band-limited complex-valued function reconstructed linearly from $\mathbf{S}$.  
 
-**One structural fact worth stating plainly:** $\mathbf{S}$ and $z(t)$ are related by a discrete Fourier transform pair.  
+**One structural fact worth stating plainly:**  
+$\mathbf{S}$ and $z(t)$ are related by a discrete Fourier transform pair.  
 Every operation below can equivalently be described as acting on $\mathbf{S}$ (coefficient space) or on $z(t)$ (reconstructed space),  
 they are the same operation viewed through two lossless, invertible representations.  
 This is the one guarantee the whole model rests on.  
