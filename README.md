@@ -107,27 +107,24 @@ proportional to distance $d$ and harmonic index $|k|$):
 
 ---
 
-## 5. A verified failure mode (kept as a documented finding, not a fix)
+## 5. A verified failure mode
 
 Given a readout of the form:
 
 $$y = \gamma \cdot \|\mathbf{S}\|^2_{\text{full}} \cdot \eta(\mathbf{S}, \mathbf{T})$$
 
-where $\|\mathbf{S}\|^2_{\text{full}}$ includes $C_0$ and $\eta$ excludes it (§2):
+where $\|\mathbf{S}\|^2_{\text{full}}$ includes $C_0$ and $\eta$ excludes it (§2):  
 
-**Numerically confirmed:** boosting $|C_0|$ by 20× while holding the $k\neq0$
-subspace fixed moved $y$ from 0.73 → 73.5 (100×) while $\eta$ stayed exactly
-1.000000 and the $C_0$-excluding variant of $y$ stayed exactly constant.
+**Numerically confirmed:**  
+boosting $|C_0|$ by 20× while holding the $k\neq0$ subspace fixed moved $y$ from 0.73 → 73.5 (100×)  
+while $\eta$ stayed exactly 1.000000 and the $C_0$-excluding variant of $y$ stayed exactly constant.  
 
-This is not a bug in arithmetic, it is what necessarily happens whenever a
-scalar readout is built by multiplying a metric that is invariant to some subspace
-by a norm that is *not* invariant to that same subspace. The general lesson,
-stated without reference to any application: **if a similarity metric explicitly
-excludes a component, any downstream formula multiplying that metric by a
-magnitude must exclude the same component, or the exclusion is undone at the
-next step.** This is worth keeping as a named finding, call it the
-**decoupled-term leak**, because it will recur in any pipeline built from this
-model, regardless of what $C_0$ ends up meaning in a given use.
+This is not a bug in arithmetic, it is what necessarily happens whenever a scalar readout is built  
+by multiplying a metric that is invariant to some subspace by a norm that is *not* invariant to that same subspace.  
+The general lesson, stated without reference to any application; if a similarity metric explicitly excludes a component,  
+any downstream formula multiplying that metric by a magnitude must exclude the same component, or the exclusion is undone at the next step.  
+This is worth keeping as a named finding, call it the **decoupled-term leak**, because it will recur in any pipeline built from this model,  
+regardless of what $C_0$ ends up meaning in a given use.  
 
 ---
 
