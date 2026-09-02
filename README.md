@@ -6,6 +6,10 @@
 
 # Comparison
 
+<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/2394ecb1-c542-405b-9a97-e8d0b499782d" />  
+*Generated Illustration*  
+  
+  
 | Feature / Dimension | Fourier Spectral Approach (SOC/FNO) | Standard CNNs (ResNet, YOLO, etc.) |
 | --- | --- | --- |
 | **Input Representation** | 1D closed contour ($z(t)$ or Fourier vector $\mathbf{S}$) | 2D Pixel Grid ($H \times W \times C$) |
