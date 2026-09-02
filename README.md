@@ -4,6 +4,18 @@
 
 *early testing*
 
+# Comparison
+
+| Feature / Dimension | Fourier Spectral Approach (SOC/FNO) | Standard CNNs (ResNet, YOLO, etc.) |
+| --- | --- | --- |
+| **Input Representation** | 1D closed contour ($z(t)$ or Fourier vector $\mathbf{S}$) | 2D Pixel Grid ($H \times W \times C$) |
+| **Invariances** | **Exact by design** (rotation, scale, position are strictly decoupled) | **Learned / Approximate** (requires data augmentation like rotating images) |
+| **Reversibility** | Lossless (Fourier pairs are 100% invertible; clear taxonomy of loss) | Lossy (Pooling and activations discard spatial info irreversibly) |
+| **Data Efficiency** | High (Zero training needed for raw metric comparison $\eta$) | Low (Requires thousands of labeled images to generalize) |
+| **Compute / Speed** | Fast ($O(N \log N)$ FFT-based calculation) | Heavy (Millions of parameter multiplies per image frame) |
+| **Occlusion Handling** | **Poor** (A broken or hidden contour corrupts all Fourier frequencies) | **Strong** (Local kernels can recognize a car even if 50% is hidden) |
+| **Resolution Dependence** | Resolution-invariant (can sample $z(t)$ at any continuous point) | Fixed grid-size (sensitive to image pixel resolution) |
+
 ## 1. Object
 
 The model operates on **finite-dimensional complex vectors representing a closed curve in a Fourier basis**:  
