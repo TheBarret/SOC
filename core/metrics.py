@@ -1,8 +1,9 @@
 """
-Metrics and readouts, all operate on Shape objects.
-The shape subspace is k != 0. C0 is excluded from eta by design (spec §2).
-Any readout that claims to measure shape match must exclude C0 explicitly,
-or it silently reintroduces the decoupled-term leak (spec §5).
+Metrics and readouts (spec §2, §3, §5).
+
+eta operates on the shape subspace (k != 0). C0 is excluded by design.
+The decoupled-term leak (§5) is a property of combining eta with a norm that includes C0.
+Both readout formulas are provided explicitly.
 """
 
 import math
@@ -12,9 +13,6 @@ import numpy as np
 from .constants import N, GAMMA, ETA_THRESH, EPSILON, k_to_index
 from .shape import Shape
 
-
-
-# Core metric
 
 def eta(shape_a: Shape, shape_b: Shape) -> float:
     """
@@ -42,9 +40,6 @@ def eta(shape_a: Shape, shape_b: Shape) -> float:
     return float(abs(inner) / denom)
 
 
-
-# Readout
-
 def y_rx(shape_in: Shape, target: Shape,
          formula: str = "spec", threshold: float = ETA_THRESH) -> float:
     """
@@ -54,8 +49,8 @@ def y_rx(shape_in: Shape, target: Shape,
         shape_in: received shape S_in.
         target: reference shape T.
         formula:
-            "spec"  -> GAMMA * ||S_in||^2_full * eta   (literal spec §3.4)
-            "fixed" -> GAMMA * ||S_in||^2_shape * eta  (excludes C0, closes leak §5)
+            "spec"  -> GAMMA * ||S_in||^2_full * eta   (spec §3.4)
+            "fixed" -> GAMMA * ||S_in||^2_shape * eta  (closes §5 leak)
         threshold: eta below this returns 0.0.
     """
     e = eta(shape_in, target)
@@ -72,28 +67,17 @@ def y_rx(shape_in: Shape, target: Shape,
     return float(GAMMA * norm * e)
 
 
-
-# Energy audit
-
 def energy_audit(before: Shape, after: Shape) -> dict:
     """
     Track energy flow across an operator (spec §3, §4C).
-
-    Returns:
-        dict with keys:
-            energy_before, energy_after, energy_delta,
-            norm_preserved (bool, within EPSILON),
-            loss_is_truncation (bool, True if no Class C operator was active)
     """
     e_before = before.norm_full()
     e_after = after.norm_full()
     delta = e_after - e_before
 
-    preserved = abs(delta) < EPSILON
-
     return {
         "energy_before": e_before,
         "energy_after": e_after,
         "energy_delta": delta,
-        "norm_preserved": preserved,
+        "norm_preserved": abs(delta) < EPSILON,
     }
