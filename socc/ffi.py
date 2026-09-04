@@ -6,7 +6,7 @@ import ctypes
 from pathlib import Path
 
 # Locate the shared object relative to this file.
-_BUILD_DIR = Path(__file__).resolve().parent.parent / "build"
+_BUILD_DIR = Path(__file__).resolve().parent / "./build"
 _LIB_PATH = _BUILD_DIR / "libsoc.so"
 
 if not _LIB_PATH.exists():
