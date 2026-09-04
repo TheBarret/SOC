@@ -2,6 +2,7 @@
 
 Current testing framework: `python -m pytest tests/ -v`  
 
+C-port library at [SOCC page](socc/)  
 
 <img width="1290" height="784" alt="image" src="https://github.com/user-attachments/assets/eb1974c2-5d91-46da-848b-1f32c4f215c2" />  
 
