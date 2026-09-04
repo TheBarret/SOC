@@ -3,6 +3,9 @@
 Python is undeniable good prototype platform, SOCC will be a port in c-language.  
 The reason is that C-compiler/framework makes use of `SSE1/2` instruction sets which provide more performance.  
 
+Usage:  
+`make clean && make all`  *output in build folder*
+
 # Project file structure
 ```
   socc/
