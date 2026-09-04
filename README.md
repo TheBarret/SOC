@@ -1,4 +1,4 @@
-# Concept: Spectral Operator Chain (SOC) or Fourier Neural Operators
+# Concept: Spectral Operator Chain (SOC) 
 
 Current testing framework: `python -m pytest tests/ -v`  
 
